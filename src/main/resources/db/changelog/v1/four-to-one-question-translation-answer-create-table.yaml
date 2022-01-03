@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: four to one question translation answer
+      author: vkostiuk
+      changes:
+        - createTable:
+            tableName: four_to_one_question_translation_answer
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name:  answer
+                  type:  varchar(255)
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  is_correct
+                  type:  boolean
+                  constraints:
+                    nullable:  false
+              - column:
+                  name: four_to_one_question_translation_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseColumnNames: four_to_one_question_translation_id
+            baseTableName: four_to_one_question_translation_answer
+            constraintName: fk_four_to_one_question_translation_answer_four_to_one_question_translation
+            referencedColumnNames: id
+            referencedTableName: four_to_one_question_translation
+            validate: true

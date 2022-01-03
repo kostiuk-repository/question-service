@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: played question statistic four to one played questions
+      author: vkostiuk
+      changes:
+        - createTable:
+            tableName: played_question_statistic_four_to_one_played_questions
+            columns:
+              - column:
+                  name: played_question_statistic_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: four_to_one_question_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseColumnNames: played_question_statistic_id
+            baseTableName: played_question_statistic_four_to_one_played_questions
+            constraintName: fk_played_question_statistic_four_to_one_played_questions_played_question_statistic
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: played_question_statistic
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: four_to_one_question_id
+            baseTableName: played_question_statistic_four_to_one_played_questions
+            constraintName: fk_played_question_statistic_four_to_one_played_questions_four_to_one_question
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: id
+            referencedTableName: four_to_one_question
+            validate: true

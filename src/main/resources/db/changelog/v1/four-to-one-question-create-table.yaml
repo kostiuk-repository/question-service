@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: four to one question
+      author: vkostiuk
+      changes:
+        - createTable:
+            tableName: four_to_one_question
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: difficulty
+                  type: varchar(6)
+                  constraints:
+                    nullable: false
